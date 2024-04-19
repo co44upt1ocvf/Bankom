@@ -135,9 +135,7 @@ int main() {
                 "\tЕсли вы хотите выйти нажмите - \"8\"\n"
                 "Операция: " << endl;
             cin >> choice;
-            if (cin.fail()) {
-                throw runtime_error("Неверный ввод номера операции");
-            }
+            check();
 
             switch (choice) {
             case 1:
