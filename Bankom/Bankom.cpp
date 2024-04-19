@@ -79,6 +79,12 @@ int chooseaccount() {
     return acc;
 }
 
+void check() {
+    if (cin.fail()) {
+        throw runtime_error("Неверный ввод");
+    }
+}
+
 int main() {
     setlocale(LC_ALL, "RUS");
 
@@ -90,10 +96,8 @@ int main() {
 
         cout << "Введите номер для первого счёта: ";
         cin >> accountNumber1;
-        if (cin.fail()) {
-            throw runtime_error("Неверный ввод номера счёта");
-        }
-        else if (accountNumber1 <= 0) {
+        check();
+        if (accountNumber1 <= 0) {
             throw invalid_argument("Номер аккаунта не может быть отрицательным или равным нулю");
         }
 
@@ -102,10 +106,8 @@ int main() {
 
         cout << "\nВведите номер для второго счета: ";
         cin >> accountNumber2;
-        if (cin.fail()) {
-            throw runtime_error("Неверный ввод номера счёта");
-        }
-        else if (accountNumber2 <= 0) {
+        check();
+        if (accountNumber2 <= 0) {
             throw invalid_argument("Номер аккаунта не может быть отрицательным или равным нулю");
         }
         else if (accountNumber2 == accountNumber1) {
@@ -143,18 +145,14 @@ int main() {
                 case 1:
                     cout << "Введите сумму для зачисления: ";
                     cin >> initialBalance1;
-                    if (cin.fail()) {
-                        throw runtime_error("Неверный ввод суммы");
-                    }
+                    check();
                     account1.deposit(initialBalance1);
                     cout << "Баланс счёта: " << account1.getBalance() << " руб." << endl;
                     break;
                 case 2:
                     cout << "Введите сумму для зачисления: ";
                     cin >> initialBalance2;
-                    if (cin.fail()) {
-                        throw runtime_error("Неверный ввод суммы");
-                    }
+                    check();
                     account2.deposit(initialBalance2);
                     cout << "Баланс счёта: " << account2.getBalance() << " руб." << endl;
                     break;
@@ -168,18 +166,14 @@ int main() {
                 case 1:
                     cout << "Введите сумму для снятия: ";
                     cin >> initialBalance1;
-                    if (cin.fail()) {
-                        throw runtime_error("Неверный ввод суммы");
-                    }
+                    check();
                     account1.withdraw(initialBalance1);
                     cout << "Баланс счёта: " << account1.getBalance() << " руб." << endl;
                     break;
                 case 2:
                     cout << "Введите сумму для снятия: ";
                     cin >> initialBalance2;
-                    if (cin.fail()) {
-                        throw runtime_error("Неверный ввод суммы");
-                    }
+                    check();
                     account2.withdraw(initialBalance2);
                     cout << "Баланс счёта: " << account2.getBalance() << " руб." << endl;
                     break;
@@ -219,18 +213,14 @@ int main() {
                 case 1:
                     cout << "Введите новую процентную ставку: ";
                     cin >> rate;
-                    if (cin.fail()) {
-                        throw runtime_error("Неверный ввод процентной ставки");
-                    }
+                    check();
                     account1.setInterestRate(rate);
                     cout << "Процентная ставка: " << rate << "%" << endl;
                     break;
                 case 2:
                     cout << "Введите новую процентную ставку: ";
                     cin >> rate;
-                    if (cin.fail()) {
-                        throw runtime_error("Неверный ввод процентной ставки");
-                    }
+                    check();
                     account2.setInterestRate(rate);
                     cout << "Процентная ставка: " << rate << "%" << endl;
                     break;
@@ -257,10 +247,7 @@ int main() {
                 case 1:
                     cout << "Введите сумму для перевода с счёта 1 на счёт 2: ";
                     cin >> amount;
-                    if (cin.fail()) {
-                        throw runtime_error("Неверный ввод суммы перевода");
-                    }
-
+                    check();
                     account1.transfer(account2, amount);
                     if (true) {
                         cout << "\nБалансы после перевода:" << endl;
@@ -271,10 +258,7 @@ int main() {
                 case 2:
                     cout << "Введите сумму для перевода с счёта 2 на счёт 1: ";
                     cin >> amount;
-                    if (cin.fail()) {
-                        throw runtime_error("Неверный ввод суммы перевода");
-                    }
-
+                    check();
                     account2.transfer(account1, amount);
                     if (true) {
                         cout << "\nБалансы после перевода:" << endl;
